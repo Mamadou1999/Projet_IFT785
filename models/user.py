@@ -1,24 +1,28 @@
 from datetime import datetime
-# from app.extensions import db
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine, Column, Integer, String, Float, Boolean, DateTime, ForeignKey, Table
+from app import db
 
+class User(db.Model):
 
-# Création de la base déclarative pour tous les modèles
-Base = declarative_base()
+    __tablename__ = 'users'
 
-class User(Base):
-    id = Column(Integer, primary_key=True)
-    email = Column(String(120), unique=True, nullable=False)
-    password = Column(String(128), nullable=False)
-    name = Column(String(80), nullable=False)
-    surname = Column(String(80), nullable=False)
-    created_at = Column(DateTime, default=datetime.now())
-    updated_at = Column(DateTime, onupdate=datetime.now())
+    
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(128), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+    surname = db.Column(db.String(80), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
-    type = Column(String(50))  # Pour la classe héritée (Company ou Developer)
+    type = db.Column(db.String(50))  # Pour la classe héritée (Company ou Developer)
     __mapper_args__ = {
         'polymorphic_identity': 'user',
         'polymorphic_on': type
     }
 
+    def authenticate(self, password):
+        return self.password == password  # À remplacer par un hash sécurisé
+
+    def update_profile(self, name, surname):
+        self.name = name
+        self.surname = surname
