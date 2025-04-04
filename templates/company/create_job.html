@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Créer une Offre d'Emploi - Adopte un Dev{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Créer une Nouvelle Offre d'Emploi</h1>
+
+  <form method="post" action="{{ url_for('create_job') }}">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre du Poste</label>
+      {{ form.title(class_='form-control', id='title', placeholder='Ex: Développeur Python') }}
+    </div>
+
+    <div class="mb-3">
+      <label for="company_name" class="form-label">Nom de l'Entreprise</label>
+      {{ form.company_name(class_='form-control', id='company_name', placeholder='Votre entreprise') }}
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Lieu</label>
+      {{ form.location(class_='form-control', id='location', placeholder='Ex: Paris, Télétravail') }}
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description du Poste</label>
+      {{ form.description(class_='form-control', id='description', rows=5, placeholder='Détails du poste') }}
+    </div>
+
+    <div class="mb-3">
+      <label for="requirements" class="form-label">Compétences Requises</label>
+      {{ form.requirements(class_='form-control', id='requirements', placeholder='Ex: Flask, SQLAlchemy') }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Publier l'Offre</button>
+    <a href="{{ url_for('dashboard_company') }}" class="btn btn-secondary">Annuler</a>
+  </form>
+</div>
+{% endblock %}
