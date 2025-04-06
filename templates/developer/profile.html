@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Profil Développeur - Adopte un Dev{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Profil de {{ developer.name }}</h1>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Informations personnelles</h5>
+      <p><strong>Email :</strong> {{ developer.email }}</p>
+      <p><strong>Compétences :</strong> {{ developer.skills }}</p>
+      <p><strong>Expérience :</strong> {{ developer.experience }} ans</p>
+
+      {% if current_user.id == developer.id %}
+        <a href="{{ url_for('edit_profile') }}" class="btn btn-primary">Modifier votre profil</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <h3 class="mt-4">Vos candidatures</h3>
+  {% if applications %}
+    <ul class="list-group">
+      {% for app in applications %}
+        <li class="list-group-item">
+          Vous avez postulé pour <a href="{{ url_for('view_job', job_id=app.job_id) }}">{{ app.job_title }}</a> chez {{ app.company_name }}.
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Vous n'avez pas encore postulé à des offres.</p>
+  {% endif %}
+</div>
+{% endblock %}

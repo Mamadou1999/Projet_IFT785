@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Recherche Avancée - Adopte un Dev{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Recherche Avancée</h1>
+  
+  <form method="get" action="{{ url_for('search_results') }}">
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre du Poste</label>
+      <input type="text" name="title" id="title" class="form-control" placeholder="Ex: Développeur Python">
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Lieu</label>
+      <input type="text" name="location" id="location" class="form-control" placeholder="Ex: Paris, Télétravail">
+    </div>
+
+    <div class="mb-3">
+      <label for="skills" class="form-label">Compétences Requises</label>
+      <input type="text" name="skills" id="skills" class="form-control" placeholder="Ex: Flask, React, SQL">
+    </div>
+
+    <div class="mb-3">
+      <label for="experience" class="form-label">Années d'expérience minimum</label>
+      <input type="number" name="experience" id="experience" class="form-control" placeholder="Ex: 2">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+  </form>
+</div>
+{% endblock %}

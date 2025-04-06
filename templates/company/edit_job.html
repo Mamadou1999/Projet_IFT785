@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Modifier l'Offre d'Emploi - Adopte un Dev{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Modifier l'Offre d'Emploi</h1>
+
+  <form method="post" action="{{ url_for('edit_job', job_id=job.id) }}">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre du Poste</label>
+      {{ form.title(class_='form-control', id='title', value=job.title) }}
+    </div>
+
+    <div class="mb-3">
+      <label for="company_name" class="form-label">Nom de l'Entreprise</label>
+      {{ form.company_name(class_='form-control', id='company_name', value=job.company_name, readonly=True) }}
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Lieu</label>
+      {{ form.location(class_='form-control', id='location', value=job.location) }}
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description du Poste</label>
+      {{ form.description(class_='form-control', id='description', rows=5) }}
+    </div>
+
+    <div class="mb-3">
+      <label for="requirements" class="form-label">Compétences Requises</label>
+      {{ form.requirements(class_='form-control', id='requirements', value=job.requirements) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer les Modifications</button>
+    <a href="{{ url_for('dashboard_company') }}" class="btn btn-secondary">Annuler</a>
+  </form>
+</div>
+{% endblock %}
