@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Modifier Profil - Adopte un Dev{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Modifier votre profil</h1>
+
+  <form method="post" action="{{ url_for('edit_profile') }}">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Nom Complet</label>
+      {{ form.name(class_='form-control', id='name', placeholder='Votre nom complet') }}
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Adresse e-mail</label>
+      {{ form.email(class_='form-control', id='email', placeholder='Votre email') }}
+    </div>
+
+    <div class="mb-3">
+      <label for="skills" class="form-label">Compétences</label>
+      {{ form.skills(class_='form-control', id='skills', placeholder='Ex: Python, Flask, Bootstrap') }}
+    </div>
+
+    <div class="mb-3">
+      <label for="minimum_salary" class="form-label">Salaire mensuel minimum</label>
+      {{ form.skills(class_='form-control', id='minimum_salary', placeholder='Ex: 5000') }}
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Adresse</label>
+      {{ form.skills(class_='form-control', id='location', placeholder='Ex: 5000') }}
+    </div>
+
+    <div class="mb-3">
+      <label for="experience" class="form-label">Années d'expérience</label>
+      {{ form.experience(class_='form-control', id='experience', placeholder='Ex: 3') }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+    <a href="{{ url_for('view_profile', dev_id=current_user.id) }}" class="btn btn-secondary">Annuler</a>
+  </form>
+</div>
+{% endblock %}

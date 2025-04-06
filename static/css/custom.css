@@ -1,0 +1,100 @@
+.profile-card,
+.job-card {
+  padding: 1.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease;
+}
+
+.profile-card:hover,
+.job-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #dee2e6;
+  margin-bottom: 1rem;
+}
+
+/* === Informations profil développeur === */
+.profile-info h5 {
+  margin-bottom: 0.25rem;
+  color: #0d6efd;
+}
+.profile-info p {
+  margin-bottom: 0;
+  color: #6c757d;
+}
+
+/* === Boutons dashboard === */
+.dashboard-actions .btn {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* === Champs de formulaire étendus === */
+.form-section {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* === Résultats de recherche === */
+.search-result {
+  padding: 1.25rem;
+  border-bottom: 1px solid #e9ecef;
+}
+.search-result:last-child {
+  border-bottom: none;
+}
+
+/* === Messages d'erreur === */
+.error-page {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #6c757d;
+}
+
+.error-page h1 {
+  font-size: 6rem;
+  color: #dc3545;
+}
+
+/* === Badge personnalisé === */
+.badge-tech {
+  background-color: #e9ecef;
+  color: #495057;
+  font-size: 0.85rem;
+  padding: 0.35em 0.6em;
+  border-radius: 0.25rem;
+  margin: 0 0.25rem 0.25rem 0;
+  display: inline-block;
+}
+
+/* === Responsive ajustements === */
+@media (max-width: 576px) {
+  .profile-card,
+  .job-card {
+    padding: 1rem;
+  }
+
+  .form-section {
+    padding: 1.25rem;
+  }
+
+  .dashboard-actions .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+}

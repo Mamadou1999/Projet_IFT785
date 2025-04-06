@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Résultats de Recherche - Adopte un Dev{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Résultats de Recherche</h1>
+  
+  {% if jobs %}
+    <ul class="list-group">
+      {% for job in jobs %}
+        <li class="list-group-item">
+          <h5><a href="{{ url_for('view_job', job_id=job.id) }}">{{ job.title }}</a></h5>
+          <p>{{ job.company_name }} - {{ job.location }}</p>
+          <p><strong>Compétences requises :</strong> {{ job.requirements }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Aucune offre ne correspond à votre recherche.</p>
+  {% endif %}
+</div>
+{% endblock %}
