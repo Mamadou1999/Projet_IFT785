@@ -1,6 +1,6 @@
-from jobpostingbuilder import JobPostingBuilder
-from company import Company
-from jobposting import JobPosting
+from services.jobpostingbuilder import JobPostingBuilder
+from services.company import Company
+from services.jobposting import JobPosting
 
 class JobPostingDirector:
     def __init__(self, builder: JobPostingBuilder):

@@ -1,4 +1,4 @@
-from user import User
+from services.user import User
 
 # Classe Company qui hérite de User
 class Company(User):
