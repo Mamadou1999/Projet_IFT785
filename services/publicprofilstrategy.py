@@ -1,4 +1,4 @@
-from profilvisibilitystrategy import ProfileVisibilityStrategy
+from services.profilvisibilitystrategy import ProfileVisibilityStrategy
 
 
 # Classe concrète PublicProfileStrategy

@@ -1,7 +1,7 @@
-from userfactory import UserFactory
-from user import User
-from developer import Developer
-from company import Company
+from services.userfactory import UserFactory
+from services.user import User
+from services.developer import Developer
+from services.company import Company
 
 # Classe concrète ConcreteUserFactory
 class ConcreteUserFactory(UserFactory):

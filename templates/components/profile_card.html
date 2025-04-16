@@ -1,7 +1,7 @@
 <div class="card h-100">
   <div class="card-body">
     <h5 class="card-title">{{ dev.name }}</h5>
-    <p class="card-text">Biographie</p>
-    <a href="#" class="btn btn-primary">Voir Profil</a>
+    <p class="card-text">{{ dev.biography }}</p>
+    <a href="{{ url_for('profile.get_profile', user_id=dev.id) }}" class="btn btn-primary">Voir Profil</a>
   </div>
 </div>

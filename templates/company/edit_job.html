@@ -6,7 +6,7 @@
 <div class="container mt-5">
   <h1 class="mb-4">Modifier l'Offre d'Emploi</h1>
 
-  <form method="post" action="{{ url_for('edit_job', job_id=job.id) }}">
+  <form method="post" action="{{ url_for('job.edit_job', job_id=job.id) }}">
     {{ form.hidden_tag() }}
 
     <div class="mb-3">
@@ -34,8 +34,14 @@
       {{ form.requirements(class_='form-control', id='requirements', value=job.requirements) }}
     </div>
 
+    <div class="mb-3">
+      <label for="salary_range" class="form-label">Fourchette de salaire</label>
+      {{ form.salary_range(class_='form-control', id='salary_range') }}
+    </div>
+    
+
     <button type="submit" class="btn btn-primary">Enregistrer les Modifications</button>
-    <a href="{{ url_for('dashboard_company') }}" class="btn btn-secondary">Annuler</a>
+    <a href="{{ url_for('auth.company_dashboard') }}" class="btn btn-secondary">Annuler</a>
   </form>
 </div>
 {% endblock %}

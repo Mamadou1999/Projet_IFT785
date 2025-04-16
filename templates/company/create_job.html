@@ -6,7 +6,7 @@
 <div class="container mt-5">
   <h1 class="mb-4">Créer une Nouvelle Offre d'Emploi</h1>
 
-  <form method="post" action="{{ url_for('create_job') }}">
+  <form method="post" action="{{ url_for('job.create_job') }}">
     {{ form.hidden_tag() }}
 
     <div class="mb-3">
@@ -34,8 +34,13 @@
       {{ form.requirements(class_='form-control', id='requirements', placeholder='Ex: Flask, SQLAlchemy') }}
     </div>
 
+    <div class="mb-3">
+      <label for="salary_range" class="form-label">Fourchette de salaire</label>
+      {{ form.salary_range(class_='form-control', id='salary_range', placeholder='Ex: 75000$-100000$ par an') }}
+    </div>    
+
     <button type="submit" class="btn btn-primary">Publier l'Offre</button>
-    <a href="{{ url_for('dashboard_company') }}" class="btn btn-secondary">Annuler</a>
+    <a href="{{ url_for('auth.company_dashboard') }}" class="btn btn-secondary">Annuler</a>
   </form>
 </div>
 {% endblock %}

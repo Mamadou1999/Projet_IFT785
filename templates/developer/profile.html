@@ -10,11 +10,14 @@
     <div class="card-body">
       <h5 class="card-title">Informations personnelles</h5>
       <p><strong>Email :</strong> {{ developer.email }}</p>
-      <p><strong>Compétences :</strong> {{ developer.skills }}</p>
-      <p><strong>Expérience :</strong> {{ developer.experience }} ans</p>
+      <p><strong>Compétences :</strong> {{ developer.programming_languages | join(', ')}}</p>
+      <p><strong>Expérience :</strong> {{ developer.experience_levels }} ans</p>
+      <p><strong>Location :</strong> {{ developer.location }}</p>
+      <p><strong>Biographie :</strong> {{ developer.biography }}</p>
+      
 
       {% if current_user.id == developer.id %}
-        <a href="{{ url_for('edit_profile') }}" class="btn btn-primary">Modifier votre profil</a>
+        <a href="{{ url_for('profile.update_profile',  user_id=current_user.id) }}" class="btn btn-primary">Modifier votre profil</a>
       {% endif %}
     </div>
   </div>

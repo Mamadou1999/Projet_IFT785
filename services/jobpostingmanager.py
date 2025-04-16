@@ -1,5 +1,5 @@
-from jobposting import JobPosting
-from jobpostingbuilder import JobPostingBuilder
+from services.jobposting import JobPosting
+from services.jobpostingbuilder import JobPostingBuilder
 from typing import List, Optional
 from datetime import datetime
 

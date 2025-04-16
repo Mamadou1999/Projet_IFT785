@@ -1,5 +1,5 @@
-from jobposting import JobPosting
-from company import Company
+from services.jobposting import JobPosting
+from services.company import Company
 from typing import List, Optional
 
 
