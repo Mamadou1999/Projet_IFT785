@@ -14,7 +14,7 @@
         <ul class="list-group">
           {% for job in company_jobs %}
             <li class="list-group-item">
-              <a href="#">{{ job.title }}</a>
+              <a href="{{ url_for('job.get_job', job_id=job.id) }}">{{ job.title }}</a>
              
               <a href="{{ url_for('job.edit_job', job_id=job.id) }}" class="btn btn-sm btn-outline-secondary">Modifier</a>
               
