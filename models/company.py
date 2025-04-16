@@ -1,11 +1,11 @@
-from user import User
-from app import db
+from app.models.user import User
+from app.extensions import db
 
 
 class Company(User):
     __tablename__ = 'companies'
 
-    id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     company_name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text)
     location = db.Column(db.String(255))
