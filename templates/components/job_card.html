@@ -4,6 +4,6 @@
     <p class="card-text">{{ job.company_name }}</p>
     <p class="card-text text-muted">{{ job.location }}</p>
     <p class="card-text">{{ job.description[:150] }}...</p>
-    <a href="#" class="btn btn-outline-primary">Voir Offre</a>
+    <a href="{{ url_for('job.get_job', job_id=job.id) }}" class="btn btn-outline-primary">Voir Offre</a>
   </div>
 </div>
