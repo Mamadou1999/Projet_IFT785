@@ -6,7 +6,7 @@
 <div class="container mt-5">
   <h1 class="mb-4">Modifier votre profil</h1>
 
-  <form method="post" action="{{ url_for('edit_profile') }}">
+  <form method="post" action="{{ url_for('profile.update_profile', user_id=current_user.id) }}">
     {{ form.hidden_tag() }}
 
     <div class="mb-3">
@@ -21,26 +21,31 @@
 
     <div class="mb-3">
       <label for="skills" class="form-label">Compétences</label>
-      {{ form.skills(class_='form-control', id='skills', placeholder='Ex: Python, Flask, Bootstrap') }}
+      {{ form.programming_languages(class_='form-control', id='skills', placeholder='Ex: Python, Flask, Bootstrap') }}
     </div>
 
     <div class="mb-3">
-      <label for="minimum_salary" class="form-label">Salaire mensuel minimum</label>
-      {{ form.skills(class_='form-control', id='minimum_salary', placeholder='Ex: 5000') }}
+      <label for="minimum_salary" class="form-label">Salaire annuel minimum</label>
+      {{ form.minimum_salary(class_='form-control', id='minimum_salary', placeholder='Ex: 75000$') }}
     </div>
 
     <div class="mb-3">
       <label for="location" class="form-label">Adresse</label>
-      {{ form.skills(class_='form-control', id='location', placeholder='Ex: 5000') }}
+      {{ form.location(class_='form-control', id='location', placeholder='Ex: Sherbrooke') }}
     </div>
 
     <div class="mb-3">
       <label for="experience" class="form-label">Années d'expérience</label>
-      {{ form.experience(class_='form-control', id='experience', placeholder='Ex: 3') }}
+      {{ form.experience_levels(class_='form-control', id='experience', placeholder='Ex: 3') }}
+    </div>
+
+    <div class="mb-3">
+      <label for="biography" class="form-label">Biography</label>
+      {{ form.biography(class_='form-control', id='biography') }}
     </div>
 
     <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
-    <a href="{{ url_for('view_profile', dev_id=current_user.id) }}" class="btn btn-secondary">Annuler</a>
+    <a href="{{ url_for('profile.get_profile', user_id=current_user.id) }}" class="btn btn-secondary">Annuler</a>
   </form>
 </div>
 {% endblock %}
