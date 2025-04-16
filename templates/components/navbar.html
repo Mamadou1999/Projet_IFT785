@@ -10,24 +10,24 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item {% if request.endpoint == 'index' %}active{% endif %}">
-          <a class="nav-link" href="#">Accueil</a>
+          <a class="nav-link" href="{{ url_for('index') }}">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">À Propos</a>
         </li>
-        {% if 1 == 0 %}
+        {% if current_user.is_authenticated %}
           <li class="nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
-            <a class="nav-link" href="#">Dashboard</a>
+            <a class="nav-link" href="{{ url_for('auth.dashboard') }}">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Déconnexion</a>
+            <a class="nav-link" href="{{ url_for('auth.logout') }}">Déconnexion</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Connexion</a>
+            <a class="nav-link" href="{{ url_for('auth.login') }}">Connexion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Inscription</a>
+            <a class="nav-link" href="{{ url_for('auth.choose_profile') }}">Inscription</a>
           </li>
         {% endif %}
       </ul>
