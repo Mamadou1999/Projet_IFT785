@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Détail de l'offre | Adopte un Dev{% endblock %}
+
+{% block content %}
+<div class="job-card">
+  <h2 class="mb-3">{{ job.title }}</h2>
+  <p class="text-muted mb-1"><strong>Entreprise :</strong> {{ job.company.name }}</p>
+  <p class="text-muted mb-1"><strong>Lieu :</strong> {{ job.location }}</p>
+  <p class="text-muted mb-3"><strong>Fourchette de salaire :</strong> {{ job.salary_range }}</p>
+
+  <hr>
+
+  <h5>Description du poste</h5>
+  <p>{{ job.description }}</p>
+
+  {% if job.requirements %}
+    <h5>Compétences requises</h5>
+    <div class="mb-3">
+      {% for tech in job.requirements %}
+        <span class="badge-tech">{{ tech }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if job.salary %}
+    <p><strong>Salaire estimé :</strong> {{ job.salary }} €</p>
+  {% endif %}
+
+  {% if job.posted_date %}
+    <p class="text-muted"><small>Publié le {{ job.posted_date.strftime('%d/%m/%Y') }}</small></p>
+  {% endif %}
+
+  <div class="mt-4">
+    <a href="#" class="btn btn-primary"> <!-- URL vers la page de soumission à l'offre -->
+      Postuler à cette offre
+    </a>
+  </div>
+</div>
+{% endblock %}

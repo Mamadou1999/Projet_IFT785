@@ -19,7 +19,7 @@
         <ul class="list-group">
           {% for job in recommended_jobs %}
             <li class="list-group-item">
-              <a href="#">{{ job.title }} - {{ job.company_name }}</a>
+              <a href="{{ url_for('job.get_job', job_id=job.id) }}">{{ job.title }} - {{ job.company_name }}</a>
             </li>
           {% endfor %}
         </ul>

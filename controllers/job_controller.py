@@ -8,6 +8,13 @@ from app.extensions import db
 
 job_bp = Blueprint('job', __name__)
 
+@job_bp.route('/job/<int:job_id>', methods=['GET'])
+def get_job(job_id):
+    
+    job = Job.query.get(job_id)
+
+    return render_template('company/job_details.html', job=job)
+
 @job_bp.route('/job/create', methods=['GET', 'POST'])
 @login_required
 def create_job():

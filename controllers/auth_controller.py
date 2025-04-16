@@ -87,8 +87,6 @@ def get_matching_jobs_for_developer(developer):
             job_salary_min <= dev_min_salary <= job_salary_max
         )
 
-        
-        print(location_match)
 
         if skill_match and location_match and salary_match:
             matching_jobs.append(job)
