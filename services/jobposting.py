@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List, Optional
-from company import Company
+from services.company import Company
 
 class JobPosting:
     def __init__(self):
