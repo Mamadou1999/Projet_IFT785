@@ -1,35 +1,37 @@
+from services.concreteuserfactory import ConcreteUserFactory
 from services.jobposting import JobPosting
 
-def test_job_posting_creation():
+def test_job_posting_creation(company_data):
     """
         Vérifie la création correcte d'une fiche de poste
     """
-    job = JobPosting(
-        title="Backend Developer",
-        location="Remote",
-        technologies=["Python", "Flask"],
-        experience_required=3,
-        salary=50000,
-        description="Backend job with REST API work"
-    )
+    factory = ConcreteUserFactory()
+    company = factory.create_user('company')
+    
+    company.email = company_data['email']
+    company._description = company_data['description']
+    company.name = company_data['companyName']
+
+    job = company.create_job_offer("Backend Developer", "Remote", ["Python", "Flask"], 5, "50000 - 65000", "Backend job with REST API work")
 
     assert job.title == "Backend Developer"
     assert job.location == "Remote"
     assert "Flask" in job.technologies
-    assert job.salary == 50000
+    assert job.salary_range == "50000 - 65000"
 
-def test_job_posting_clone():
+def test_job_posting_clone(company_data):
     """
         Vérifie la fonctionnalité de clonage d'une fiche de poste
     """
-    job = JobPosting(
-        title="Frontend Dev",
-        location="Paris",
-        technologies=["React", "CSS"],
-        experience_required=2,
-        salary=45000,
-        description="UI/UX heavy role"
-    )
+    factory = ConcreteUserFactory()
+    company = factory.create_user('company')
+    
+    company.email = company_data['email']
+    company._description = company_data['description']
+    company.name = company_data['companyName']
+
+    job = company.create_job_offer("Backend Developer", "Remote", ["Python", "Flask"], 5, "50000 - 65000", "Backend job with REST API work")
+
     cloned = job.clone()
 
     assert cloned is not job
