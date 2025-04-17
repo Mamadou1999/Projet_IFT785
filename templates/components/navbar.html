@@ -16,9 +16,16 @@
           <a class="nav-link" href="#">À Propos</a>
         </li>
         {% if current_user.is_authenticated %}
+          {% if current_user.type == "developer" %}
           <li class="nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
             <a class="nav-link" href="{{ url_for('auth.dashboard') }}">Dashboard</a>
           </li>
+          
+          {% else %}
+          <li class="nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
+            <a class="nav-link" href="{{ url_for('auth.company_dashboard') }}">Dashboard</a>
+          </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('auth.logout') }}">Déconnexion</a>
           </li>
