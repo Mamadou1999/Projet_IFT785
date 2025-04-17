@@ -3,28 +3,50 @@ from typing import Dict, Any
 
 class User:
     def __init__(self):
-        self.id = None
-        self.email = ""
-        self.password = ""
-        self.name = ""
-        self.surname = ""
-        self.created_at = None
-        self.updated_at = None
+        self._id = None
+        self._email = ""
+        self._password = ""
+        self._name = ""
+        self._surname = ""
+        self._created_at = None
+        self._updated_at = None
+
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, value):
+        self._email = value
     
-    def authenticate(self, email, password):
-        print(f"Authentification de l'utilisateur {self.name}")
-        return True
+    @property
+    def name(self):
+        return self._name
+        
+    @name.setter
+    def name(self, value):
+        self._name = value
     
-    def update_profile(self, object):
-        print(f"Mise à jour du profil de {self.name}")
-        self.updated_at = "current_datetime"
+    @property
+    def password(self):
+        return self._password
+        
+    @password.setter
+    def password(self, value):
+        self._password = value
+    
+    def update_profile(self, data):
+        for key, value in data.items():
+            # Ne pas traiter les attributs qui n'existent pas
+            if hasattr(self, key):
+                setattr(self, key, value)
 
     def get_profile(self) -> Dict[str, Any]:
         return {
-            'id': self.id,
-            'name': self.name,
-            'surname': self.surname,
-            'email': self.email,
-            'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'id': self._id,
+            'name': self._name,
+            'surname': self._surname,
+            'email': self._email,
+            'created_at': self._created_at,
+            'updated_at': self._updated_at
         }
