@@ -23,9 +23,10 @@ class UserManager(UserSubject):
     def register_user(self, type, user_data):
         factory = ConcreteUserFactory()
         user = factory.create_user(type)
+        
         user.email = user_data.get('email')
         user.name = user_data.get('name')
-        user.surname = user_data.get('surname')
+        user._surname = user_data.get('surname')
         user.password = user_data.get('password')
         self.current_user = user
         self.notify("user_registered")
