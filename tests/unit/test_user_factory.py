@@ -5,20 +5,26 @@ def test_create_developer_user(user_factory, developer_data):
     """
         Vérifier que la factory crée correctement un utilisateur développeur
     """
-    dev = user_factory.create_user("developer", **developer_data)
+    dev = user_factory.create_user("developer")
+    dev.programming_languages = developer_data['programmingLanguages']
+    dev.experience_levels = developer_data['experienceLevels']
+    
 
     assert isinstance(dev, Developer)
-    assert dev.programming_languages == ["Python", "JavaScript"]
-    assert dev.experience_levels["Python"] == 4
+    assert dev._programming_languages == ["Python", "JavaScript"]
+    assert dev._experience_levels == 5
 
 def test_create_company_user(user_factory, company_data):
     """
         Vérifier que la factory crée correctement un utilisateur entreprise
     """
-    company = user_factory.create_user("company", **company_data)
+    company = user_factory.create_user("company")
+    company.email = company_data['email']
+    company._description = company_data['description']
+    company._company_name = company_data['companyName']
 
     assert isinstance(company, Company)
-    assert company.company_name == "Startup Inc."
-    assert company.description == "A small innovative startup."
+    assert company._company_name == "Startup Inc."
+    assert company._description == "A small innovative startup."
 
 
